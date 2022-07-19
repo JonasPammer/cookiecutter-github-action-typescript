@@ -10,8 +10,5 @@ module.exports = {
   verbose: true,
   // as per https://github.com/codecov/example-typescript/blob/main/package.json:
   collectCoverage: true,
-  coverageReporters: [
-    "text",
-    "cobertura"
-  ]
+  coverageReporters: ["text", "cobertura"],
 };
