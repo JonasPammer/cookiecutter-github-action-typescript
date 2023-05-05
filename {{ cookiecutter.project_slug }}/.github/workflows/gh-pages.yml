@@ -53,6 +53,14 @@ jobs:
       - name: Generate README.adoc using ascidoctor-reducer.
         run: asciidoctor-reducer README.orig.adoc -o README.adoc
 
+      - name: generate README.xml from README.adoc using ascidoctor
+        run: asciidoctor -b docbook README.adoc
+
+      - name: Generate README.md from README.xml using pandoc
+        uses: docker://pandoc/core:3.1
+        with:
+          args: "-f docbook -t markdown_strict README.xml -o README.md --wrap=none"
+
       ### SECURITY.adoc
       - name: generate SECURITY.xml from SECURITY.adoc using ascidoctor
         run: asciidoctor -b docbook SECURITY.adoc
